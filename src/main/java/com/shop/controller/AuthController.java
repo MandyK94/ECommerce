@@ -33,7 +33,7 @@ public class AuthController {
 	public String register(@RequestBody AuthRequest request) {
 		User user = new User();
 		user.setUsername(request.getUsername());
-		user.setPassword(request.getPassword());
+		user.setPassword(passwordEncoder.encode(request.getPassword()));
 		user.setRole("USER");
 		userRepository.save(user);
 		return AppMessages.USER_REGISTRATION_SUCESSFULL;
