@@ -47,9 +47,9 @@ Login logic: AuthManager verifies credentials (JWT token generation need to be p
 
 
 Curl commands:<br>
-curl -X POST http://localhost:8080/api/auth/register \<br>
--H "Content-Type: application/json" \<br>
--d '{"username":"testuser","password":"testpass"}'<br>
+curl -X POST http://localhost:8080/api/auth/register \   <br>
+-H "Content-Type: application/json" \    <br>
+-d '{"username":"testuser","password":"testpass"}'   <br>
 
 Browser:<br>
 http://localhost:8080/api/products<br>
@@ -68,12 +68,12 @@ CREATE USER shop_user WITH PASSWORD 'secret';<br>
 CREATE DATABASE shope;<br>
 -- Give your user access<br>
 GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;<br>
-\q<br>
+\q <br>
 
 
-install maven:<br>
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br>
-brew install maven<br>
+install maven: <br>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)" <br>
+brew install maven <br>
 
-start spring boot:<br>
-mvn spring-boot:run<br>
+start spring boot: <br>
+mvn spring-boot:run <br>
