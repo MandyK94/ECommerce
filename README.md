@@ -1,79 +1,79 @@
-A basic ecommerce platform where user can browse products, Add to cart / wishlist, Place orders, View order history, User registration & login (JWT or session)
+A basic ecommerce platform where user can browse products, Add to cart / wishlist, Place orders, View order history, User registration & login (JWT or session)<br>
 Also admin can Add/edit/remove products, Manage orders, View sales reports
 
-Tech stack :
-Language: Java 17+
-Framework: Spring Boot
-Security: Spring Security + JWT
-Database: PostgreSQL or MySQL
-ORM: Hibernate (JPA)
-API Docs: Swagger/OpenAPI
-Build Tool: Maven or Gradle
-Testing: JUnit + Mockito
+Tech stack :<br>
+Language: Java 17+<br>
+Framework: Spring Boot<br>
+Security: Spring Security + JWT<br>
+Database: PostgreSQL or MySQL<br>
+ORM: Hibernate (JPA)<br>
+API Docs: Swagger/OpenAPI<br>
+Build Tool: Maven or Gradle<br>
+Testing: JUnit + Mockito<br>
 
 
-Architecture:
-Client (React)
-   |
-REST API (Spring Boot)
-   |
-Services (Business logic)
-   |
-Repositories (JPA)
-   |
-Database (PostgreSQL)
+Architecture:<br>
+Client (React)<br>
+   |<br>
+REST API (Spring Boot)<br>
+   |<br>
+Services (Business logic)<br>
+   |<br>
+Repositories (JPA)<br>
+   |<br>
+Database (PostgreSQL)<br>
 
-Entities & Relationships: 
-User (1) ↔ (M) Order
-Order (1) ↔ (M) OrderItem
-Product (1) ↔ (M) OrderItem
-User (1) ↔ (M) CartItem
+Entities & Relationships:<br> 
+User (1) ↔ (M) Order<br>
+Order (1) ↔ (M) OrderItem<br>
+Product (1) ↔ (M) OrderItem<br>
+User (1) ↔ (M) CartItem<br>
 
-API Endpoints Example:
-Method	Endpoint	Description
-POST	/auth/register	Register user
-POST	/auth/login	Login + JWT
-GET	/products	Get all products
-POST	/cart/add	Add product to cart
-POST	/order/checkout	Place an order
-GET	/admin/products	Admin view products
-POST	/admin/product	Add/edit product
+API Endpoints Example:<br>
+Method	Endpoint	Description<br>
+POST	/auth/register	Register user<br>
+POST	/auth/login	Login + JWT<br>
+GET	/products	Get all products<br>
+POST	/cart/add	Add product to cart<br>
+POST	/order/checkout	Place an order<br>
+GET	/admin/products	Admin view products<br>
+POST	/admin/product	Add/edit product<br>
 
-Basic packages info:
-DTOs: AuthRequest, AuthResponse
-Security config: Password encoder, security filter chain, and stateless session setup
-AuthController: Register and login endpoints
-Login logic: AuthManager verifies credentials (JWT token generation need to be plugged in)
-
-
-Curl commands:
-curl -X POST http://localhost:8080/api/auth/register \
--H "Content-Type: application/json" \
--d '{"username":"testuser","password":"testpass"}'
-
-Browser:
-http://localhost:8080/api/products
+Basic packages info:<br>
+DTOs: AuthRequest, AuthResponse<br>
+Security config: Password encoder, security filter chain, and stateless session setup<br>
+AuthController: Register and login endpoints<br>
+Login logic: AuthManager verifies credentials (JWT token generation need to be plugged in)<br>
 
 
-PostgreSQL install:
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install postgresql
-brew services start postgresql
+Curl commands:<br>
+curl -X POST http://localhost:8080/api/auth/register \<br>
+-H "Content-Type: application/json" \<br>
+-d '{"username":"testuser","password":"testpass"}'<br>
 
-Create postgre db:
-psql postgres
--- Create a user
-CREATE USER shop_user WITH PASSWORD 'secret';
--- Create a database
-CREATE DATABASE shope;
--- Give your user access
-GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;
-\q
+Browser:<br>
+http://localhost:8080/api/products<br>
 
 
-install maven:
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-brew install maven
+PostgreSQL install:<br>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br>
+brew install postgresql<br>
+brew services start postgresql<br>
 
-start spring boot:
-mvn spring-boot:run
+Create postgre db:<br>
+psql postgres<br>
+-- Create a user<br>
+CREATE USER shop_user WITH PASSWORD 'secret';<br>
+-- Create a database<br>
+CREATE DATABASE shope;<br>
+-- Give your user access<br>
+GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;<br>
+\q<br>
+
+
+install maven:<br>
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"<br>
+brew install maven<br>
+
+start spring boot:<br>
+mvn spring-boot:run<br>
