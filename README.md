@@ -60,14 +60,36 @@ PostgreSQL install:<br>
 brew install postgresql<br>
 brew services start postgresql<br>
 
+
+
 Create postgre db:<br>
-psql postgres<br>
+
+createuser -s -P postgres <br>
+
+psql -U postgres<br>
+-- Create database <br>
+CREATE DATABASE shop; <br>
+-- List all DB <br>
+\l <br>
 -- Create a user<br>
 CREATE USER shop_user WITH PASSWORD 'secret';<br>
 -- Create a database<br>
 CREATE DATABASE shop;<br>
 -- Give your user access<br>
 GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;<br>
+-- log into shop database using shop_user account <br>
+psql -U shop_user -d shop <br>
+
+-- create product table <br>
+CREATE TABLE products ( <br>
+    id SERIAL PRIMARY KEY, <br>
+    name VARCHAR(255) NOT NULL, <br>
+    description TEXT, <br>
+    price DECIMAL(10, 2) NOT NULL, <br>
+    stock INT NOT NULL <br>
+); <br>
+
+
 \q <br>
 
 
