@@ -1,6 +1,9 @@
 package com.shop.controller;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.javapoet.ClassName;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -20,6 +23,8 @@ import com.shop.util.AppMessages;
 @RequestMapping("/api/auth")
 public class AuthController {
 
+	private static final Logger logger = LoggerFactory.getLogger(ClassName.class);
+	
 	@Autowired
 	private AuthenticationManager authenticationManager;
 	
@@ -41,8 +46,9 @@ public class AuthController {
 	
 	@PostMapping("/login")
 	public AuthResponse login(@RequestBody AuthRequest request) {
-		Authentication authentication = authenticationManager.authenticate(
-				new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+		logger.debug("login point hit");
+		//Authentication authentication = authenticationManager.authenticate(
+		//		new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
 		return new AuthResponse("dummy-jwt-token");
 	}
 }
