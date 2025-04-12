@@ -77,3 +77,7 @@ brew install maven <br>
 
 start spring boot: <br>
 mvn spring-boot:run <br>
+
+Ppstgres start and stop: <br>
+brew services start postgresql <br>
+brew services restart postgresql@14 <br>
