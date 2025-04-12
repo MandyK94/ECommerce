@@ -65,7 +65,7 @@ psql postgres<br>
 -- Create a user<br>
 CREATE USER shop_user WITH PASSWORD 'secret';<br>
 -- Create a database<br>
-CREATE DATABASE shope;<br>
+CREATE DATABASE shop;<br>
 -- Give your user access<br>
 GRANT ALL PRIVILEGES ON DATABASE shop TO shop_user;<br>
 \q <br>
