@@ -9,6 +9,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class SecurityConfig {
@@ -25,8 +27,13 @@ public class SecurityConfig {
 	
 	@Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		http.csrf().disable().authorizeHttpRequests()
-		.requestMatchers("/api/auth/**", "/api/test/products/**").permitAll()
+		http.csrf().disable().cors()
+		.and().authorizeHttpRequests()
+		.requestMatchers("/api/auth/**",
+                "/api/test/products/**",
+                "/", "/error", "/favicon.ico",
+                "/index.html", "/static/**"
+                ).permitAll()
 		.anyRequest().authenticated()
 		.and()
 		.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
@@ -34,4 +41,18 @@ public class SecurityConfig {
 		return http.build();
 	}
 	
+	@Bean
+	public WebMvcConfigurer corsConfigurer() {
+	    return new WebMvcConfigurer() {
+	        @Override
+	        public void addCorsMappings(CorsRegistry registry) {
+	            registry.addMapping("/**")
+	                    .allowedOrigins("http://localhost:3000")
+	                    .allowedMethods("GET", "POST", "PUT", "DELETE")
+	                    .allowedHeaders("*")
+	                    .exposedHeaders("Authorization")
+	                    .allowCredentials(true);
+	        }
+	    };
+	}
 }
