@@ -16,8 +16,8 @@ const Login =() => {
 		try{
 			console.log(LOGIN_URL);
 			const response = await axios.post(LOGIN_URL, {
-					username:'test', 
-					password:'password'
+					username, 
+					password
 				}, {
 					withCredentials:'true'
 				}).then(res=>console.log(res));
