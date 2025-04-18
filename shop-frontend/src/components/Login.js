@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import axios from 'axios';
+import './css/Login.css';
 import { LOGIN_URL, INVALID_LOGIN_ERROR_MESSAGE} from '../config';
 
 const Login =() => {
@@ -7,11 +8,14 @@ const Login =() => {
 	const [password, setPassword] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
 	
+	const registerUser = () => {
+		window.location.href = '/register';
+	}
+	
 	// handle form submission
 	
 	const handleSubmit = async(e) => {
 		e.preventDefault();
-		//setErrorMessage('');
 		
 		try{
 			console.log(LOGIN_URL);
@@ -20,7 +24,7 @@ const Login =() => {
 					password
 				}, {
 					withCredentials:'true'
-				}).then(res=>console.log(res));
+				}).then(res=>res);
 				
 			// store token in local storage
 			localStorage.setItem('token', response.data.token);
@@ -68,7 +72,13 @@ const Login =() => {
 				{errorMessage && <p className="error-message">{errorMessage}</p>}
 				<button type="submit">Login</button>
 			</form>
+			<div 
+			/*style={{display:'flex', flexDirection:'column', justifyContent:'center', textAlign:'center'}}*/
+			>
+				<p>Don't have an account? <a href={REGISTER_URL}>Register</a></p>	
+			</div>
 		</div>
+		
 	);
 };
 

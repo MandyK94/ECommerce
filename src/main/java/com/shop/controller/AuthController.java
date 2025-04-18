@@ -40,8 +40,8 @@ public class AuthController {
 	@PostMapping("/register")
 	public String register(@RequestBody AuthRequest request) {
 		User user = new User();
-		user.setUsername(request.getUsername());
-		user.setPassword(passwordEncoder.encode(request.getPassword()));
+		user.setUsername("user1");
+		user.setPassword(passwordEncoder.encode("abcd"));
 		user.setRole("USER");
 		userRepository.save(user);
 		return AppMessages.USER_REGISTRATION_SUCESSFULL;
@@ -49,14 +49,14 @@ public class AuthController {
 	
 	@PostMapping("/login")
 	public ResponseEntity login(@RequestBody AuthRequest request) {
-		try {
-			Authentication authentication = authenticationManager.authenticate(
-					new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
-		} catch (AuthenticationException e) {
+		User user = userRepository.findByUsername(request.getUsername());
+		if(user==null) {
 			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
 		}
-		final UserDetails userDetails = userDetailsService.loadUserByUsername(request.getUsername());
-		final String jwt = jwtUtil.generateToken(userDetails.getUsername());
+		if(!passwordEncoder.matches(request.getPassword(), user.getPassword())) {
+			return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Invalid credentials");
+		}
+		final String jwt = jwtUtil.generateToken(user.getUsername());
 		return ResponseEntity.ok(new JwtResponse(jwt));
 	}
 }
