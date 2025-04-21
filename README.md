@@ -67,6 +67,59 @@
   </tr>
 </table>
 
+<hr>
+<h2>User Service</h2>
+<p>This service handles user profile, authentication, and role management.</p>
+<h3>Responsibilities</h3>
+<li>User registration & login (JWT authentication)</li>
+<li>Profile management (CRUD operations)</li>
+<li>Role-based access control (RBAC)</li>
+<li>Password hashing & security</li>
+
+<h2>API endpoints</h2>
+
+<table>
+  <tr>
+    <th>Endpoint</th>	
+    <th>Method</th>	
+    <th>Description</th>	
+    <th>Auth Required</th>
+  </tr>
+  <tr>
+    <td>/api/auth/register</td>
+    <td>POST</td>
+    <td>Register new user</td>
+    <td>No</td>
+  </tr>
+  
+  <tr>
+    <td>/api/auth/login</td>
+    <td>POST</td>
+    <td>Login (returns JWT)</td>
+    <td>No</td>
+  </tr>
+  
+  <tr>
+    <td>/api/users/me</td>
+    <td>GET</td>
+    <td>Get current user profile</td>
+    <td>YES</td>
+  </tr>
+  
+  <tr>
+    <td>/api/users/{id}</td>
+    <td>PUT</td>
+    <td>Update user details</td>
+    <td>Yes (owner/admin)</td>
+  </tr>
+  
+  <tr>
+    <td>/api/admin/users</td>
+    <td>GET</td>
+    <td>List all users (admin only)</td>
+    <td>Yes (admin)</td>
+  </tr>
+</table>
 
 <hr>
 Curl commands:<br>
