@@ -1,12 +1,13 @@
-package com.shop;
+package com.ecommerce.userservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-
-public class ShopApplication {
+@SpringBootApplication
+public class UserServiceApplication {
 
 	public static void main(String[] args) {
-        SpringApplication.run(ShopApplication.class, args);
+        SpringApplication.run(UserServiceApplication.class, args);
 	}
+	
 }
