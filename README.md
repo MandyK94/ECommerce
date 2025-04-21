@@ -1,5 +1,74 @@
 <h1>Microservices E-Commerce Platform </h1>
+<p>A blueprint for the system</p>
 
+<h2>Business Requirements</h2>
+<li>User registration & authentication.</li>
+<li>Product catalog & search.</li>
+<li>Shopping cart & checkout.</li>
+<li>Order processing & payments.</li>
+<li>Shipping & notifications.</li>
+<li>Reviews & recommendations.</li>
+
+<h2>Microservices breakdown</h2>
+<table>
+  <tr>
+    <th>Service</th>
+    <th>Responsibility</th>
+    <th>Database</th>
+    <th>Protocol</th>
+  </tr>
+  <tr>
+    <td>1. User Service</td>
+    <td>Auth, profiles, roles.</td>
+    <td>PostgreSQL</td>
+    <td>REST/JWT</td>
+  </tr>
+  <tr>
+    <td>2. Product Service</td>
+    <td>Product catalog, categories, inventory.</td>
+    <td>MongoDB</td>
+    <td>REST/gRPC</td>
+  </tr>
+  <tr>
+    <td>3. Cart Service</td>
+    <td>Shopping cart management.</td>
+    <td>Redis</td>
+    <td>REST</td>
+  </tr>
+  <tr>
+    <td>4. Order Service</td>
+    <td>Order creation, status tracking.</td>
+    <td>PostgreSQL</td>
+    <td>REST+Kafka</td>
+  </tr>
+  <tr>
+    <td>5. Paymet Service</td>
+    <td>Payments (Stripe/PayPal integration).</td>
+    <td>PostgreSQL</td>
+    <td>REST</td>
+  </tr>
+  <tr>
+    <td>6. Shipping Service</td>
+    <td>Shipping cost calculation, tracking.</td>
+    <td>PostgreSQL</td>
+    <td>REST</td>
+  </tr>
+  <tr>
+    <td>7. Notification Service</td>
+    <td>Emails/SMS (order confirmations).</td>
+    <td>MongoDB</td>
+    <td>Kafka</td>
+  </tr>
+  <tr>
+    <td>8. Search Service</td>
+    <td>Elasticsearch-powered product search.</td>
+    <td>Elasticsearch</td>
+    <td>REST</td>
+  </tr>
+</table>
+
+
+<hr>
 Curl commands:<br>
 curl -X POST http://localhost:8080/api/auth/register \   <br>
 -H "Content-Type: application/json" \    <br>
