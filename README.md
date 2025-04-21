@@ -122,7 +122,7 @@
 </table>
 
 <hr>
-<h4>Miscelleneous</h4>
+<h3>Miscelleneous</h3>
 Curl commands:<br>
 curl -X POST http://localhost:8080/api/auth/register \   <br>
 -H "Content-Type: application/json" \    <br>
