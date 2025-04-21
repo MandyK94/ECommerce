@@ -76,7 +76,7 @@
 <li>Role-based access control (RBAC)</li>
 <li>Password hashing & security</li>
 
-<h2>API endpoints</h2>
+<h3>API endpoints</h3>
 
 <table>
   <tr>
@@ -122,7 +122,7 @@
 </table>
 
 <hr>
-<h3>Miscelleneous</h3>
+<h2>Miscelleneous</h2>
 Curl commands:<br>
 curl -X POST http://localhost:8080/api/auth/register \   <br>
 -H "Content-Type: application/json" \    <br>
